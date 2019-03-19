@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang=it>
+	<head>
+		<title>Titolo della pagina qui</title>
+		<!-- CSS normalize online -->
+		<link rel=stylesheet href=http://getskeleton.com/dist/css/normalize.css>
+		
+		<!-- CSS Skeleton online -->
+		<link rel=stylesheet href=http://getskeleton.com/dist/css/skeleton.css>
+	<style>
+	#acquisto{
+		display:none;
+		visibility:hidden;
+	}
+	</style>
+		<!-- Javascript -->
+		<script>
+		function calcola(){	
+		var a = document.forms[0].adulti.value;
+		var r = document.forms[0].ragazzi.value;
+		var totale=a*13+r*8;
+		
+		/*calcolo totale*/
+		
+		/*Se il totale è>=40 applico il 20% di sconto*/
+		if(totale>=40){
+			/*vero*/
+			var totale_scontato=totale*0.8;
+			document.getElementById("totale").innerHTML="Totale "+totale_scontato+" &euro;"; 
+			document.getElementById("sconto").innerHTML="hai ottenuto il 20% di sconto";
+		}
+		else{
+			/*falso*/	
+			document.getElementById("totale").innerHTML="Totale "+totale+" &euro;";
+			document.getElementById("sconto").innerHTML="non hai diritto allo sconto";
+					
+				}
+		/* mostro il ripilogo dati al cliente*/
+		var b=document.forms[0].cliente.value;
+		var cliente=document.forms[0].cliente.value;
+		vartelefono = document.forms[0].telefono.value;
+		document.getElementById("riepilogo")innerHTML="<b>Riepilogo prenotazione</b><br>cliente: "+cliente+"<br>telefono:"+telefono+"<br>Adulti:"+a+"<br>Ragazzi: "+r+"<br>Bambini:"+b;
+	    } 
+	   
+	    function visibile(){
+	    document.getElementById("acquisto").style.dispaly="block";
+		document.getElementById("acquisto").style.visibility="visibile";
+	    }  
+	    function invisibile(){
+		document.getElementById("acquisto").style.dispaly="none";
+		document.getElementById("acquisto").style.visibility="hidden";
+	    } 
+		</script>
+	</head>
+	<body>
+		
+		<h3>Prenota Online la tua visita</h3>
+		<button type=button onclick=visibile()>mostra il form</button>
+		<button type=button onclick=invisibile()>nascondi il form</button>
+	<div id=acquisto>
+		
+	<form name=prenotazione>
+	<label for=adulti>Adulti (maggiori di 12 anni)</label>
+	<br>
+	<br>13 £ciacuno</b>
+	<input type=number name=adulti min=0 step=1 required>
+	<br>
+	<label for=ragazzi>Ragazzi/e (fra 6e 12 anni)</label>
+	<br>
+	<br>8 £ ciascuno</b><br>
+	<input type=number name=ragazzi min=0 step=1>
+	<br>
+	<label for=bambini>Bambini/e (meno di 6 anni)</label>
+	<br>
+	<br>gratis</bs>
+	<input type=number name=bambini  min=0 step=1>
+	<br>
+	<label for=cliente>Cogniome e nome</label>
+	<br>
+	<input type=text name=cliente required>
+	<br>
+	<label for=telefono>Telefono mobile</label>
+	<br>
+	<input type=number name=telefono required>
+	<br>
+	<input type=reset value=Annulla>
+	<button type=button onclick=calcola()>Acquista!</button>
+	</form>
+	<p id=totale> </p>
+	<p id=sconto > </p>
+	<p id=riepilogo> </p>
+	</div>
+	</body>
+</html>
